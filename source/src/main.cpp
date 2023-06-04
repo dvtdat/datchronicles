@@ -1,11 +1,7 @@
-#include "graphics.cpp"
+#include "game.cpp"
 
 int main(int argc, char* argv[])
 {
-    Graphics graphics;
-    while (true)
-    {
-        
-    }
+    Game game;
     return 0;
 }
