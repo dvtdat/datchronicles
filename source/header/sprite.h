@@ -10,9 +10,10 @@ class Graphics;
 class Sprite
 {
 private:
+    float x, y;
+protected:
     SDL_Rect sourceRect;
     SDL_Texture* spriteSheet;
-    float x, y;
 public:
     Sprite();
     Sprite(Graphics &graphics, const std::string &filePath, 

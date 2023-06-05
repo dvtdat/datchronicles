@@ -3,10 +3,11 @@
 #include <SDL2/SDL_image.h>
 
 #include "..\header\graphics.h"
+#include "..\header\global.h"
 
 Graphics::Graphics()
 {
-    SDL_CreateWindowAndRenderer(640, 480, 0, &this->window, &this->renderer);
+    SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0, &this->window, &this->renderer);
     SDL_SetWindowTitle(this->window, "Datchronicles");
 }
 
