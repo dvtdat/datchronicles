@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="45">
  <tileset firstgid="1" name="PrtCave" tilewidth="16" tileheight="16" tilecount="80" columns="16">
   <image source="../tilesets/PrtCave.png" width="256" height="80"/>
  </tileset>
@@ -651,4 +651,34 @@
    <tile gid="49"/>
   </data>
  </layer>
+ <objectgroup id="3" name="Collisions">
+  <object id="3" x="144.043" y="16.0435" width="15.913" height="15.8696"/>
+  <object id="4" x="144" y="64.0435" width="16.0435" height="15.913"/>
+  <object id="8" x="160.063" y="64.0625" width="32.125" height="15.75"/>
+  <object id="9" x="160" y="16" width="32" height="15.8182"/>
+  <object id="10" x="176" y="32" width="15.9091" height="32"/>
+  <object id="11" x="64.1818" y="16.1818" width="15.6364" height="96"/>
+  <object id="12" x="80.1818" y="32.3636" width="31.8182" height="15.8182"/>
+  <object id="13" x="64" y="112.364" width="16.1818" height="15.4545"/>
+  <object id="14" x="64" y="128.182" width="47.6364" height="31.4545"/>
+  <object id="15" x="96" y="128.364" width="16" height="63.2727"/>
+  <object id="16" x="112.182" y="182" width="15.8182" height="9.81818"/>
+  <object id="17" x="128" y="191.875" width="80" height="16.125"/>
+  <object id="18" x="192.375" y="176" width="15.75" height="15.875"/>
+  <object id="21" x="208.125" y="160.625" width="15.75" height="15.375"/>
+  <object id="22" x="207.875" y="127.875" width="32.125" height="16"/>
+  <object id="23" x="240" y="80.25" width="16.125" height="47.875"/>
+  <object id="24" x="223.875" y="80.25" width="16.125" height="15.75"/>
+  <object id="25" x="192.375" y="64" width="31.625" height="16.125"/>
+  <object id="26" x="112.125" y="16" width="15.875" height="15.75"/>
+  <object id="27" x="128.125" y="0" width="16" height="16"/>
+  <object id="34" x="129.545" y="144" width="43.8182" height="15.8182"/>
+  <object id="35" x="194.091" y="144" width="22.5455" height="15.9091"/>
+  <object id="37" x="113.273" y="80.0909" width="78.6364" height="16"/>
+ </objectgroup>
+ <objectgroup id="4" name="Spawnpoint">
+  <object id="43" name="Player" x="158.545" y="132.455" width="2.36364" height="2.36364">
+   <ellipse/>
+  </object>
+ </objectgroup>
 </map>

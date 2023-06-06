@@ -7,6 +7,7 @@
 #include "sprite.h"
 #include "global.h"
 #include "tile.h"
+#include "rectangle.h"
 
 class Graphics;
 struct SDL_Texture;
@@ -25,6 +26,7 @@ private:
 
     std::vector<Tile> tileList;
     std::vector<Tileset> tilesets;
+    std::vector<Rectangle> collisionRects;
 
     void loadMap(std::string mapName, Graphics &graphics);
 
@@ -34,6 +36,9 @@ public:
     ~Level();
     void update(int elapsedTime);
     void draw(Graphics &graphics);
+
+    std::vector<Rectangle> checkTileCollisions(const Rectangle &other);
+    const Vector2 getPlayerSpawnPoint() const;
 };
 
 struct Tileset

@@ -20,8 +20,10 @@ Sprite::Sprite(Graphics &graphics, const std::string &filePath,
     spriteSheet = SDL_CreateTextureFromSurface(graphics.getRenderer(), graphics.loadImage(filePath));
     if (spriteSheet == NULL)
     {
-        printf("\nError: Unable to load img...\n");
-    } 
+        std::cout << "[ERROR] Unable to load image\n";
+    }
+
+    boundingBox = Rectangle(x, y, width * globals::SPRITE_SCALE, height * globals::SPRITE_SCALE);
 }
 
 Sprite::~Sprite()
@@ -37,5 +39,34 @@ void Sprite::draw(Graphics &graphics, int x, int y)
 
 void Sprite::update()
 {
+    boundingBox = Rectangle(x, y, sourceRect.w * globals::SPRITE_SCALE, sourceRect.h * globals::SPRITE_SCALE);
+}
 
+const Rectangle Sprite::getBoundingBox() const
+{
+    return boundingBox;
+}
+
+const sides::Side Sprite::getCollisionSide(Rectangle &other) const
+{
+    int amtRight, amtLeft, amtTop, amtBottom;
+    amtRight = getBoundingBox().getRight() - other.getLeft();
+    amtLeft = other.getRight() - getBoundingBox().getLeft();
+    amtTop = other.getBottom() - getBoundingBox().getTop();
+    amtBottom = getBoundingBox().getBottom() - other.getTop();
+
+    int vals[4] = { abs(amtRight), abs(amtLeft), abs(amtTop), abs(amtBottom) };
+    int lowest = vals[0];
+    for (int i = 0; i < 4; ++i)
+    {
+        if (vals[i] < lowest)
+        {
+            lowest = vals[i];
+        }
+    }
+
+    return  lowest == abs(amtRight) ? sides::RIGHT :
+            lowest == abs(amtLeft) ? sides::LEFT :
+            lowest == abs(amtTop) ? sides::TOP :
+            lowest == abs(amtBottom) ? sides::BOTTOM : sides::NONE;
 }

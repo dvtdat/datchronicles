@@ -13,9 +13,10 @@ class Player : public AnimatedSprite
 private:
     float dx, dy;
     Direction facing;
+    bool grounded;
 public:
     Player();
-    Player(Graphics &graphics, float x, float y);
+    Player(Graphics &graphics, Vector2 spawnPoint);
     ~Player();
 
     void draw(Graphics &graphics);
@@ -27,6 +28,11 @@ public:
 
     virtual void animationDone(std::string currentAnimation);
     virtual void setUpAnimation();
+
+    void handleTileCollision(std::vector<Rectangle> &others);
+
+    const float getX() const;
+    const float getY() const;
 };
 
 #endif // PLAYER_H
