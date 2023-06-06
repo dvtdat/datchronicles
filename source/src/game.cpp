@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <iostream>
 
 #include "graphics.cpp"
 #include "input.cpp"
@@ -27,9 +28,7 @@ void Game::gameLoop()
     Input input;
     SDL_Event event;
 
-    player = AnimatedSprite(graphics, "content/sprites/MyChar.png", 0, 0, 16, 16, 100, 100, 100);
-    player.setUpAnimation();
-    player.playAnimation("RunLeft");
+    player = Player(graphics, 100, 100);
 
     int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -41,8 +40,10 @@ void Game::gameLoop()
         {
             if (event.type == SDL_KEYDOWN)
             {
-                if (event.key.repeat) continue;
-                input.keyDownEvent(event);
+                if (event.key.repeat == 0)
+                {
+                    input.keyDownEvent(event);
+                }
             }
             else if (event.type == SDL_KEYUP)
             {
@@ -56,7 +57,23 @@ void Game::gameLoop()
 
         if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE))
         {
+            std::cout << "Escape Key Pressed...\n";
             return;
+        }
+        else if (input.isKeyHeld(SDL_SCANCODE_LEFT))
+        {
+            std::cout << "Left Key Pressed...\n";
+            player.moveLeft();
+        }
+        else if (input.isKeyHeld(SDL_SCANCODE_RIGHT))
+        {
+            std::cout << "Right Key Pressed...\n";
+            player.moveRight();
+        }
+        
+        if (!input.isKeyHeld(SDL_SCANCODE_LEFT) && !input.isKeyHeld(SDL_SCANCODE_RIGHT))
+        {
+            player.stopMoving();
         }
 
         const int CURRENT_TIME_MS = SDL_GetTicks();
@@ -71,7 +88,7 @@ void Game::gameLoop()
 void Game::draw(Graphics &graphics)
 {
     graphics.clear();
-    player.draw(graphics, 100, 100);
+    player.draw(graphics);
     graphics.flip();
 }
 

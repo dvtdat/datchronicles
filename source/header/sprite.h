@@ -9,9 +9,8 @@ class Graphics;
 
 class Sprite
 {
-private:
-    float x, y;
 protected:
+    float x, y;
     SDL_Rect sourceRect;
     SDL_Texture* spriteSheet;
 public:

@@ -3,6 +3,7 @@
 
 #include "..\src\animatedsprite.cpp"
 #include "..\src\sprite.cpp"
+#include "..\src\player.cpp"
 
 class Graphics;
 
@@ -12,7 +13,7 @@ private:
     void gameLoop();
     void draw(Graphics &graphics);
     void update(float elapsedTime);
-    AnimatedSprite player;
+    Player player;
 public:
     Game();
     ~Game();

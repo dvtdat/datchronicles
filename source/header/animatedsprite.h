@@ -27,7 +27,8 @@ protected:
     void resetAnimation();
     void stopAnimation();
     void setVisible(bool visible);
-    virtual void animationDone(std::string currentAnimation);
+    virtual void animationDone(std::string currentAnimation) = 0;
+    virtual void setUpAnimation() = 0;
 public:
     AnimatedSprite();
     AnimatedSprite(Graphics &graphics, const std::string &filePath, 
@@ -35,7 +36,6 @@ public:
     void playAnimation(std::string animation, bool once = false);
     void update(int elapsedTime);
     void draw(Graphics &graphics, int x, int y);
-    virtual void setUpAnimation();
 };
 
 #endif // ANIMATED_SPRITE_H
