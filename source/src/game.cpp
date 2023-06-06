@@ -29,6 +29,7 @@ void Game::gameLoop()
     SDL_Event event;
 
     player = Player(graphics, 100, 100);
+    level = Level("map 1", Vector2(100, 100), graphics);
 
     int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -57,17 +58,14 @@ void Game::gameLoop()
 
         if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE))
         {
-            std::cout << "Escape Key Pressed...\n";
             return;
         }
         else if (input.isKeyHeld(SDL_SCANCODE_LEFT))
         {
-            std::cout << "Left Key Pressed...\n";
             player.moveLeft();
         }
         else if (input.isKeyHeld(SDL_SCANCODE_RIGHT))
         {
-            std::cout << "Right Key Pressed...\n";
             player.moveRight();
         }
         
@@ -88,6 +86,7 @@ void Game::gameLoop()
 void Game::draw(Graphics &graphics)
 {
     graphics.clear();
+    level.draw(graphics); // Level get drawn before Player -> Player is on the upper layer
     player.draw(graphics);
     graphics.flip();
 }
@@ -95,4 +94,5 @@ void Game::draw(Graphics &graphics)
 void Game::update(float elapsedTime)
 {
     player.update(elapsedTime);
+    level.update(elapsedTime);
 }

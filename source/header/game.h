@@ -4,6 +4,7 @@
 #include "..\src\animatedsprite.cpp"
 #include "..\src\sprite.cpp"
 #include "..\src\player.cpp"
+#include "..\src\level.cpp"
 
 class Graphics;
 
@@ -14,6 +15,7 @@ private:
     void draw(Graphics &graphics);
     void update(float elapsedTime);
     Player player;
+    Level level;
 public:
     Game();
     ~Game();
