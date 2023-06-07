@@ -4,6 +4,8 @@
 namespace playerconstant
 {
     const float WALK_SPEED = 0.2f;
+    const float JUMP_SPEED = 0.7f;
+
     const float GRAVITY = 0.002f;
     const float GRAVITY_CAP = 0.8f;
 };
@@ -78,6 +80,13 @@ void Player::stopMoving()
     playAnimation(facing == RIGHT ? "IdleRight" : "IdleLeft");
 }
 
+void Player::jump()
+{
+    if (!grounded) return;
+    dy = 0;
+    dy -= playerconstant::JUMP_SPEED;
+    grounded = false;
+}
 
 void Player::handleTileCollision(std::vector<Rectangle> &others)
 {
@@ -86,7 +95,16 @@ void Player::handleTileCollision(std::vector<Rectangle> &others)
         sides::Side collisionSide = Sprite::getCollisionSide(others.at(i));
         if (collisionSide != sides::NONE)
         {
-            if (collisionSide == sides::TOP) y = others.at(i).getBottom() + 1, dy = 0;
+            if (collisionSide == sides::TOP)
+            {
+                dy = 0;
+                y = others.at(i).getBottom() + 1;
+                if (grounded)
+                {
+                    dx = 0;
+                    x -= facing == RIGHT ? 1.0f : -1.0f;
+                }
+            }
             if (collisionSide == sides::BOTTOM) y = others.at(i).getTop() - boundingBox.getHeight() - 1, dy = 0, grounded = true;
             if (collisionSide == sides::LEFT) x = others.at(i).getRight() + 1;
             if (collisionSide == sides::RIGHT) x = others.at(i).getLeft() - boundingBox.getWidth() - 1;
@@ -94,6 +112,22 @@ void Player::handleTileCollision(std::vector<Rectangle> &others)
     }
 }
 
+void Player::handleSlopeCollision(std::vector<Slope> &others)
+{
+    for (int i = 0; i < others.size(); ++i)
+    {
+        int b = (others.at(i).getP1().y - (others.at(i).getSlope() * fabs(others.at(i).getP1().x)));
+
+        int centerX = boundingBox.getCenterX();
+        int newY = (others.at(i).getSlope() * centerX) + b - 8; // 8 is a magic number, don't ask me why
+
+        if (grounded)
+        {
+            y = newY - boundingBox.getHeight();
+            grounded = true;
+        }
+    }
+}
 
 const float Player::getX() const
 {

@@ -5,6 +5,7 @@
 
 #include "animatedsprite.h"
 #include "global.h"
+#include "slope.h"
 
 class Graphics;
 
@@ -25,11 +26,13 @@ public:
     void moveLeft();
     void moveRight();
     void stopMoving();
+    void jump();
 
     virtual void animationDone(std::string currentAnimation);
     virtual void setUpAnimation();
 
     void handleTileCollision(std::vector<Rectangle> &others);
+    void handleSlopeCollision(std::vector<Slope> &others);
 
     const float getX() const;
     const float getY() const;

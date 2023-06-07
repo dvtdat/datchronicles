@@ -9,6 +9,7 @@
 #include "..\header\global.h"
 #include "..\header\graphics.h"
 #include "..\header\tile.h"
+#include "..\header\utils.h"
 #include "tile.cpp"
 #include "tinyxml2.cpp"
 
@@ -207,6 +208,49 @@ void Level::loadMap(std::string mapName, Graphics &graphics)
                     }
                 }
             }
+
+            if (ss.str() == "Slopes")
+            {
+                XMLElement* pObject = pObjectGroup->FirstChildElement("object");
+                if (pObject != nullptr)
+                {
+                    while (pObject)
+                    {
+                        std::vector<Vector2> points;
+                        Vector2 p1;
+                        p1 = Vector2(std::ceil(pObject->FloatAttribute("x")), std::ceil(pObject->FloatAttribute("y")));
+
+                        XMLElement* pPolyline = pObject->FirstChildElement("polyline");
+                        if (pPolyline != nullptr)
+                        {
+                            std::vector<std::string> pairs;
+                            const char* pointString = pPolyline->Attribute("points");
+
+                            std::stringstream ss;
+                            ss << pointString;
+                            Utils::split(ss.str(), pairs, ' ');
+
+                            for (int i = 0; i < pairs.size(); ++i)
+                            {
+                                std::vector<std::string> ps;
+                                Utils::split(pairs.at(i), ps, ',');
+                                points.push_back(Vector2(std::stoi(ps.at(0)), std::stoi(ps.at(1))));
+                            }
+                        }
+
+                        for (int i = 0; i < points.size() - 1; i++)
+                        {
+                            slopes.push_back(Slope( Vector2((p1.x + points.at(i).x) * globals::SPRITE_SCALE, 
+                                                            (p1.y + points.at(i).y) * globals::SPRITE_SCALE),
+                                                    Vector2((p1.x + points.at(i + 1).x) * globals::SPRITE_SCALE, 
+                                                            (p1.y + points.at(i + 1).y) * globals::SPRITE_SCALE)));
+                        }
+
+                        pObject = pObject->NextSiblingElement("object");
+                    }
+                }
+            }
+
             // Other objectgroup will go here with ss.str() == "abcxyz"
             pObjectGroup = pObjectGroup->NextSiblingElement("objectgroup");
         }
@@ -226,7 +270,6 @@ void Level::draw(Graphics &graphics)
     }
 }
 
-
 std::vector<Rectangle> Level::checkTileCollisions(const Rectangle &other)
 {
     std::vector<Rectangle> others;
@@ -238,6 +281,19 @@ std::vector<Rectangle> Level::checkTileCollisions(const Rectangle &other)
         }
     }
 
+    return others;
+}
+
+std::vector<Slope> Level::checkSlopeCollisions(const Rectangle &other)
+{
+    std::vector<Slope> others;
+    for (int i = 0; i < slopes.size(); ++i)
+    {
+        if (slopes.at(i).collidesWith(other))
+        {
+            others.push_back(slopes.at(i));
+        }
+    }
     return others;
 }
 
