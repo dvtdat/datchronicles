@@ -78,8 +78,7 @@ void AnimatedSprite::update(int elapsedTime)
             {
                 setVisible(false);
             }
-            frameIndex = 0;
-            animationDone(currentAnimation);
+            stopAnimation();
         }
     }
 }

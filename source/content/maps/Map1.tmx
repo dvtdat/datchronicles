@@ -3,6 +3,7 @@
  <tileset firstgid="1" name="PrtCave" tilewidth="16" tileheight="16" tilecount="80" columns="16">
   <image source="../tilesets/PrtCave.png" width="256" height="80"/>
  </tileset>
+ <tileset firstgid="81" source="../tilesets/NpcSym.tsx"/>
  <layer id="1" name="Background" width="20" height="16">
   <data>
    <tile gid="1"/>
@@ -416,8 +417,8 @@
    <tile gid="34"/>
    <tile gid="54"/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="107"/>
+   <tile gid="107"/>
    <tile gid="2"/>
    <tile gid="34"/>
    <tile gid="33"/>
@@ -685,7 +686,7 @@
   <object id="226" x="186.545" y="186.545" width="5.36364" height="5.09091"/>
  </objectgroup>
  <objectgroup id="4" name="Spawnpoint">
-  <object id="43" name="Player" x="151.356" y="131.795" width="2.36364" height="2.36364">
+  <object id="43" name="Player" x="162.689" y="134.129" width="2.36364" height="2.36364">
    <ellipse/>
   </object>
  </objectgroup>

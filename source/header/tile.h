@@ -8,7 +8,7 @@ class Graphics;
 
 class Tile
 {
-private:
+protected:
     SDL_Texture* tileset;
     Vector2 size;
     Vector2 tilesetPosition;
