@@ -58,26 +58,77 @@ void Player::setUpAnimation()
     addAnimation(1, 0, 16, "IdleRight", 16, 16, Vector2(0, 0));
     addAnimation(3, 0, 0, "RunLeft", 16, 16, Vector2(0, 0));
     addAnimation(3, 0, 16, "RunRight", 16, 16, Vector2(0, 0));
+    addAnimation(1, 3, 0, "IdleLeftUp", 16, 16, Vector2(0, 0));
+    addAnimation(1, 3, 16, "IdleRightUp", 16, 16, Vector2(0, 0));
+    addAnimation(3, 3, 0, "RunLeftUp", 16, 16, Vector2(0, 0));
+    addAnimation(3, 3, 16, "RunRightUp", 16, 16, Vector2(0, 0));
+    addAnimation(1, 6, 0, "LookDownLeft", 16, 16, Vector2(0, 0));
+    addAnimation(1, 6, 16, "LookDownRight", 16, 16, Vector2(0, 0));
+    addAnimation(1, 7, 0, "LookBackwardsLeft", 16, 16, Vector2(0, 0));
+    addAnimation(1, 7, 16, "LookBackwardsRight", 16, 16, Vector2(0, 0));
 }
 
 void Player::moveLeft()
 {
+    if (lookingDown == true && grounded == true) return;
+    
     dx = -playerconstant::WALK_SPEED;
-    playAnimation("RunLeft");
+    if (lookingUp == false) playAnimation("RunLeft");
     facing = LEFT;
 }
 
 void Player::moveRight()
 {
+    if (lookingDown == true && grounded == true) return;
+    
     dx = playerconstant::WALK_SPEED;
-    playAnimation("RunRight");
+    if (lookingUp == false) playAnimation("RunRight");
     facing = RIGHT;
 }
 
 void Player::stopMoving()
 {
     dx = 0.0f;
-    playAnimation(facing == RIGHT ? "IdleRight" : "IdleLeft");
+    if (lookingUp == false && lookingDown == false)
+    {
+        playAnimation(facing == RIGHT ? "IdleRight" : "IdleLeft");
+    }
+}
+
+void Player::lookUp()
+{
+    lookingUp = true;
+    if (dx == 0)
+    {
+        playAnimation(facing == RIGHT ? "IdleRightUp" : "IdleLeftUp");
+    }
+    else
+    {
+        playAnimation(facing == RIGHT ? "RunRightUp" : "RunLeftUp");
+    }
+}
+
+void Player::stopLookingUp()
+{
+    lookingUp = false;
+}
+
+void Player::loopDown()
+{
+    lookingDown = true;
+    if (grounded == true)
+    {
+        playAnimation(facing == RIGHT ? "LookBackwardsRight" : "LookBackwardsLeft");
+    }
+    else
+    {
+        playAnimation(facing == RIGHT ? "LookDownRight" : "LookDownLeft");
+    }
+}
+
+void Player::stopLookingDown()
+{
+    lookingDown = false;
 }
 
 void Player::jump()

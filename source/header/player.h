@@ -15,6 +15,7 @@ private:
     float dx, dy;
     Direction facing;
     bool grounded;
+    bool lookingUp, lookingDown;
 public:
     Player();
     Player(Graphics &graphics, Vector2 spawnPoint);
@@ -26,6 +27,12 @@ public:
     void moveLeft();
     void moveRight();
     void stopMoving();
+    
+    void lookUp();
+    void stopLookingUp();
+    void loopDown();
+    void stopLookingDown();
+    
     void jump();
 
     virtual void animationDone(std::string currentAnimation);
