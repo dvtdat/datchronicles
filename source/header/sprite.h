@@ -27,6 +27,14 @@ public:
 
     const Rectangle getBoundingBox() const;
     const sides::Side getCollisionSide(Rectangle &other) const;
+
+    const inline float getX() const { return x; }
+    const inline float getY() const { return y; }
+
+    void setSourceRectX(int value);
+    void setSourceRectY(int value);
+    void setSourceRectW(int value);
+    void setSourceRectH(int value);
 };
 
 #endif // SPRITE_H

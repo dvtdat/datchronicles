@@ -5,6 +5,7 @@
 #include "..\src\sprite.cpp"
 #include "..\src\player.cpp"
 #include "..\src\level.cpp"
+#include "..\src\hud.cpp"
 
 class Graphics;
 
@@ -16,6 +17,7 @@ private:
     void update(float elapsedTime);
     Player player;
     Level level;
+    HUD hud;
 public:
     Game();
     ~Game();

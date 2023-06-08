@@ -17,7 +17,7 @@ Player::Player()
 
 Player::Player(Graphics &graphics, Vector2 spawnPoint):
     AnimatedSprite(graphics, "content/sprites/MyChar.png", 0, 0, 16, 16, spawnPoint.x, spawnPoint.y, 100),
-    dx(0), dy(0), facing(RIGHT), grounded(false)
+    dx(0), dy(0), facing(RIGHT), grounded(false), lookingUp(false), lookingDown(false), maxHP(3), currentHP(3)
 {
     graphics.loadImage("content/sprites/MyChar.png");
     setUpAnimation();

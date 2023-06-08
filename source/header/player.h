@@ -16,6 +16,7 @@ private:
     Direction facing;
     bool grounded;
     bool lookingUp, lookingDown;
+    int maxHP, currentHP;
 public:
     Player();
     Player(Graphics &graphics, Vector2 spawnPoint);
@@ -43,6 +44,9 @@ public:
 
     const float getX() const;
     const float getY() const;
+
+    const inline int getMaxHP() const { return maxHP; }
+    const inline int getCurrentHP() const { return currentHP; }
 };
 
 #endif // PLAYER_H

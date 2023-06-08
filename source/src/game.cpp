@@ -8,7 +8,7 @@
 namespace 
 {
     const int FPS = 50;
-    const int MAX_FRAME_TIME = 5 * 1000 / FPS;
+    const int MAX_FRAME_TIME = 1000 / FPS;
 }
 
 Game::Game()
@@ -30,6 +30,7 @@ void Game::gameLoop()
 
     level = Level("Map1", Vector2(100, 100), graphics);
     player = Player(graphics, level.getPlayerSpawnPoint());
+    hud = HUD(graphics, player);
 
     int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -112,6 +113,7 @@ void Game::draw(Graphics &graphics)
     graphics.clear();
     level.draw(graphics); // Level get drawn before Player -> Player is on the upper layer
     player.draw(graphics);
+    hud.draw(graphics);
     graphics.flip();
 }
 
@@ -119,6 +121,7 @@ void Game::update(float elapsedTime)
 {
     player.update(elapsedTime);
     level.update(elapsedTime);
+    hud.update(elapsedTime);
     std::vector<Rectangle> othersRect = level.checkTileCollisions(player.getBoundingBox());
     if (othersRect.size() > 0)
     {
