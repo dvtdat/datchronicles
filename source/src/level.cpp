@@ -184,6 +184,7 @@ void Level::loadMap(std::string mapName, Graphics &graphics)
                             xx = tileCnt % width;
                             xx *= tileWidth;
                             yy += tileHeight * (tileCnt / width);
+
                             Vector2 finalTilePosition = Vector2(xx, yy);
                             Vector2 finalTilesetPosition = getTilesetPosition(tls, gid, tileWidth, tileHeight);
 
@@ -384,12 +385,14 @@ Vector2 Level::getTilesetPosition(Tileset tls, int gid, int tileWidth, int tileH
     SDL_QueryTexture(tls.texture, NULL, NULL, &tilesetWidth, &tilesetHeight);
     
     int tsxx = gid % (tilesetWidth / tileWidth) - 1;
+    if (tsxx < 0) tsxx = tilesetWidth / tileWidth - 1; // if out of bound
     tsxx *= tileWidth;
 
     int tsyy = 0;
     int amt = ((gid - tls.firstGid) / (tilesetWidth / tileWidth)); 
     tsyy = tileHeight * amt;
     // (gid - tls.firstGid) as account for different first gid index of different tilesets
+
     return Vector2(tsxx, tsyy);
 }
 
