@@ -6,6 +6,8 @@
 #include "animatedsprite.h"
 #include "global.h"
 #include "slope.h"
+#include "door.h"
+#include "level.h"
 
 class Graphics;
 
@@ -41,6 +43,7 @@ public:
 
     void handleTileCollision(std::vector<Rectangle> &others);
     void handleSlopeCollision(std::vector<Slope> &others);
+    void handleDoorCollision(std::vector<Door> &others, Level &level, Graphics &graphics);
 
     const float getX() const;
     const float getY() const;

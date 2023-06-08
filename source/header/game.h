@@ -14,7 +14,8 @@ class Game
 private:
     void gameLoop();
     void draw(Graphics &graphics);
-    void update(float elapsedTime);
+    void update(float elapsedTime, Graphics &graphics);
+    // Graphics graphics;
     Player player;
     Level level;
     HUD hud;
