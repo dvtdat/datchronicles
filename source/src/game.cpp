@@ -28,7 +28,7 @@ void Game::gameLoop()
     Input input;
     SDL_Event event;
 
-    level = Level("Map1", graphics);
+    level = Level("Map0", graphics);
     player = Player(graphics, level.getPlayerSpawnPoint());
     hud = HUD(graphics, player);
 
@@ -93,6 +93,12 @@ void Game::gameLoop()
         {
             player.jump();
         }
+
+        if (input.isKeyHeld(SDL_SCANCODE_SPACE) && player.isGrounded())
+        {
+            player.jump();
+        }
+        
         
         if (!input.isKeyHeld(SDL_SCANCODE_A) && !input.isKeyHeld(SDL_SCANCODE_D))
         {

@@ -19,6 +19,7 @@ private:
     bool grounded;
     bool lookingUp, lookingDown;
     int maxHP, currentHP;
+    int jumpTime;
 public:
     Player();
     Player(Graphics &graphics, Vector2 spawnPoint);
@@ -37,6 +38,7 @@ public:
     void stopLookingDown();
     
     void jump();
+    void resetJumpTime() { jumpTime = 1; } // for double jump
 
     virtual void animationDone(std::string currentAnimation);
     virtual void setUpAnimation();
@@ -50,6 +52,7 @@ public:
 
     const inline int getMaxHP() const { return maxHP; }
     const inline int getCurrentHP() const { return currentHP; }
+    const inline bool isGrounded() const { return grounded; }
 };
 
 #endif // PLAYER_H

@@ -133,10 +133,22 @@ void Player::stopLookingDown()
 
 void Player::jump()
 {
-    if (!grounded) return;
-    dy = 0;
-    dy -= playerconstant::JUMP_SPEED;
-    grounded = false;
+    if (grounded)
+    {
+        resetJumpTime();
+        dy = 0;
+        dy -= playerconstant::JUMP_SPEED;
+        grounded = false;
+        return;
+    }
+    else if (jumpTime != 0)
+    {
+        jumpTime--;
+        dy = 0;
+        dy -= playerconstant::JUMP_SPEED;
+        return;
+    }
+    
 }
 
 void Player::handleTileCollision(std::vector<Rectangle> &others)
