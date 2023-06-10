@@ -565,6 +565,9 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="60"/>
+   <tile gid="61"/>
+   <tile gid="62"/>
    <tile/>
    <tile/>
    <tile/>
@@ -582,12 +585,9 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="76"/>
+   <tile gid="27"/>
+   <tile gid="78"/>
    <tile gid="2"/>
    <tile gid="2"/>
    <tile gid="2"/>
@@ -986,9 +986,9 @@
  </objectgroup>
  <objectgroup id="5" name="Slopes"/>
  <objectgroup id="7" name="Door">
-  <object id="231" x="289.125" y="71.2917" width="8.125" height="11.625">
+  <object id="231" x="292.125" y="191.625" width="8.125" height="11.625">
    <properties>
-    <property name="destination" value="Map2"/>
+    <property name="destination" value="Map1"/>
    </properties>
   </object>
  </objectgroup>

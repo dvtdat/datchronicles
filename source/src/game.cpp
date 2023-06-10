@@ -88,7 +88,7 @@ void Game::gameLoop()
         {
             player.stopLookingDown();
         }
-        
+
         if (input.wasKeyPressed(SDL_SCANCODE_SPACE))
         {
             player.jump();
@@ -98,7 +98,6 @@ void Game::gameLoop()
         {
             player.jump();
         }
-        
         
         if (!input.isKeyHeld(SDL_SCANCODE_A) && !input.isKeyHeld(SDL_SCANCODE_D))
         {

@@ -360,8 +360,8 @@
    <tile/>
    <tile gid="44"/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="5"/>
+   <tile gid="6"/>
    <tile gid="50"/>
    <tile gid="49"/>
    <tile gid="50"/>
@@ -385,8 +385,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="5"/>
+   <tile gid="6"/>
    <tile gid="33"/>
    <tile gid="50"/>
    <tile gid="49"/>
@@ -586,7 +586,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="21"/>
    <tile gid="33"/>
    <tile gid="43"/>
    <tile gid="43"/>
@@ -605,7 +605,7 @@
    <tile gid="24"/>
    <tile gid="24"/>
    <tile gid="9"/>
-   <tile gid="49"/>
+   <tile gid="10"/>
    <tile gid="50"/>
    <tile gid="49"/>
    <tile gid="34"/>
@@ -980,7 +980,7 @@
   <object id="171" x="32" y="0" width="16" height="16"/>
   <object id="172" x="48" y="0" width="16" height="16"/>
   <object id="177" x="176" y="224" width="112" height="16"/>
-  <object id="181" x="288" y="205.273" width="16" height="34.7273"/>
+  <object id="181" x="288.545" y="208.546" width="15.4545" height="31.4546"/>
   <object id="182" x="304" y="112" width="16" height="48"/>
   <object id="186" x="304" y="32" width="16" height="48"/>
   <object id="187" x="224" y="16" width="96" height="16"/>
@@ -1000,13 +1000,13 @@
   <object id="207" x="215.909" y="16" width="8.09091" height="8.63636"/>
   <object id="208" x="208.273" y="15.7273" width="7.90909" height="6.18182"/>
   <object id="209" x="201.182" y="15.8182" width="7.27273" height="3"/>
-  <object id="212" x="281.25" y="211.125" width="6.75" height="12.625"/>
-  <object id="213" x="274.25" y="215" width="7.25" height="8.5"/>
+  <object id="212" x="281.25" y="213.307" width="6.75" height="10.4432"/>
+  <object id="213" x="274.25" y="217" width="7.25" height="6.5"/>
   <object id="214" x="266.5" y="219.25" width="7.5" height="4.5"/>
   <object id="215" x="176" y="212.875" width="6.8125" height="11.125"/>
   <object id="216" x="182.813" y="216.125" width="8" height="7.6875"/>
   <object id="217" x="190.938" y="219.688" width="12.8125" height="4.375"/>
-  <object id="218" x="296.091" y="198.091" width="7.90909" height="9.90909"/>
+  <object id="218" x="296.636" y="203.727" width="7.36364" height="4.27273"/>
   <object id="219" x="304" y="160" width="16" height="48"/>
   <object id="220" x="304" y="80" width="16" height="32"/>
   <object id="221" x="32" y="144" width="44.75" height="16"/>
@@ -1027,7 +1027,7 @@
    <polyline points="0,0 48,16"/>
   </object>
   <object id="193" x="256" y="224">
-   <polyline points="0,0 47.4545,-32.7273"/>
+   <polyline points="0,0 47.8181,-26.7273"/>
   </object>
  </objectgroup>
  <objectgroup id="4" name="Spawnpoint">
